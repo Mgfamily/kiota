@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.Json.Serialization;
 using Kiota.Builder.Extensions;
 
 namespace Kiota.Builder.CodeDOM;
@@ -41,6 +42,7 @@ public class CodeClass : ProprietableBlock<CodeClassKind, ClassDeclaration>, ITy
     /// <summary>
     /// Original composed type this class was generated for.
     /// </summary>
+    [JsonIgnore]
     public CodeComposedTypeBase? OriginalComposedType
     {
         get; set;
@@ -201,6 +203,7 @@ public class CodeClass : ProprietableBlock<CodeClassKind, ClassDeclaration>, ITy
     /// <summary>
     /// The interface associated with this class, if any.
     /// </summary>
+    [JsonIgnore]
     public CodeInterface? AssociatedInterface
     {
         get; set;
@@ -252,6 +255,7 @@ public class CodeClass : ProprietableBlock<CodeClassKind, ClassDeclaration>, ITy
             _discriminatorInformation = value;
         }
     }
+    [JsonIgnore]
     public DeprecationInformation? Deprecation
     {
         get; set;
